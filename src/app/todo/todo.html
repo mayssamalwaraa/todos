@@ -1,0 +1,9 @@
+<ul>
+    <input type="search" id="search-by" name="searchBy" placeholder="search todos" [(ngModel)]="searchBy" />
+    @for(todo of todos() |filterTodo: searchBy(); track todo.id){
+       <li appHighlightCompletedTodo [isCompleted]="todo.completed">
+         <input id="todo-{{todo.id}}" type="checkbox" [checked]="todo.completed" [defaultChecked]="todo.completed" (change)="handleUpdatetodo(todo)"/>
+        <label for="todo-{{todo.id}}">{{todo.title | titlecase}}</label>
+       </li>
+    }
+</ul>
